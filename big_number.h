@@ -2,15 +2,27 @@
 #define BIGNUMER_H
 #include<iostream>
 #include<vector>
-class Huglet{
-Huglet(){};
-friend ostream &operator<<(ostream&,const Huglet& hu);
-friend istream &operator>>(istream&,const Huglet& hu);
+#include<iostream>
+#include<vector>
+#include<string>
+#include<cstdlib>
+#include<sstream>
+using namespace std;
+class Hugelnt{
+	friend ostream & operator <<(ostream &,const Hugelnt &);
+	friend istream & operator >>(istream &,Hugelnt &);
+	public:
+	Hugelnt();
+	Hugelnt(long long int );
 
-
-
-privite:
+	Hugelnt(string);
+	const Hugelnt & operator =(Hugelnt );
+	Hugelnt operator -(Hugelnt &);
+	Hugelnt operator +(Hugelnt &);
+private:
 vector<int>vec1;
-
+string str;
 };
+ostream & operator <<(ostream &,const Hugelnt &);
+	istream & operator >>(istream &,Hugelnt &);
 #endif

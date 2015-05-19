@@ -2,14 +2,11 @@
 #include<vector>
 #include<string>
 #include<cstdlib>
+#include"big_number.h"
 #include<sstream>
 using namespace std;
-class Hugelnt{
-friend ostream & operator <<(ostream &,const Hugelnt &);
-friend istream & operator >>(istream &,Hugelnt &);
-public:
-Hugelnt(){}
-Hugelnt(long long int i){
+Hugelnt::Hugelnt(){}
+Hugelnt::Hugelnt(long long int i){
 int n;
 //str=""+i;
 stringstream ss;
@@ -20,7 +17,7 @@ vec1.push_back(static_cast<int>(str.at(n))-48);
 }
 }
 
-Hugelnt(string one){
+Hugelnt::Hugelnt(string one){
 	int k,j;
 	str = one;
 	for(k=0;k<str.length();k++)
@@ -29,11 +26,11 @@ Hugelnt(string one){
 	vec1.push_back(j);
 	}
 }
-const Hugelnt & operator =(Hugelnt hu){
+const Hugelnt & Hugelnt::operator =(Hugelnt hu){
 str=hu.str;
 vec1=hu.vec1;
 return (*this);}
-Hugelnt operator -(Hugelnt &hu){
+Hugelnt Hugelnt::operator -(Hugelnt &hu){
 Hugelnt ll;
 int n,size=(this->vec1.size()>hu.vec1.size())?(this->vec1.size()):(hu.vec1.size());
 vector<int>vec2(size);
@@ -52,7 +49,7 @@ if((n==(size-1))&&(vec2.at(n)==0)){n=n-1;}
 ll.vec1.push_back(vec2[n]);}
 return (ll);
 }
-Hugelnt operator +(Hugelnt &hu){
+Hugelnt Hugelnt::operator +(Hugelnt &hu){
 Hugelnt ll;
 int n,size=1+(this->vec1.size()>hu.vec1.size())?(this->vec1.size()):(hu.vec1.size());
 vector<int>vec2(size);
@@ -81,10 +78,6 @@ return (ll);
 //ll.vec1.push_back(vec2.at(n));
 //return (ll);
 //}
-private:
-vector<int>vec1;
-string str;
-};
 ostream & operator <<(ostream &out,const Hugelnt &hu){
 int i;
 for(i=0;i<hu.vec1.size();i++)
@@ -103,15 +96,3 @@ hu.vec1.push_back(j);
 }
 
 return in;}
-int main(){
-Hugelnt x;
-Hugelnt y(28825252);
-Hugelnt z("314159265358979323846");
-Hugelnt result;
-cin>>x;
-result=x+y;
-cout<<x<<'+'<<y<<'='<<result<<endl;
-result=z-x;
-cout<<result<<endl;
-//cout<<x;
-return 0;}
